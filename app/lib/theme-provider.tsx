@@ -22,10 +22,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     if (stored === "light" || stored === "dark") {
       setThemeState(stored);
       document.documentElement.classList.toggle("dark", stored === "dark");
-    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      setThemeState("dark");
-      document.documentElement.classList.add("dark");
     }
+    // No stored preference: keep default light (already set in useState)
   }, []);
 
   const setTheme = (next: Theme) => {
